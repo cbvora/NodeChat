@@ -1,0 +1,14 @@
+{
+  "name": "chat",
+  "node": "0.6.12",
+  "author": "cbvora",
+  "dependencies": {
+    "express": "*",
+    "node-emoji": "^1.8.1",
+    "socket.io": "*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
+ 

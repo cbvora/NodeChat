@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head> 
+  <title>PlexusChat</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css" > 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script> 
+  <script src="script.js"></script>    
+    
+</head> 
+
+<body>
+ 
+  <div class="container app" id="main_container"> 
+    <div class="row app-one">
+ 
+      <div class="col-sm-12 conversation"> 
+
+        <div class="row heading">  
+          <div class="col-sm-1 col-md-1 col-xs-2 heading-avatar">
+            <div class="heading-avatar-icon">
+              <img src="/plex_user_default.png">
+            </div>    
+          </div>    
+          <div class="col-sm-10 col-md-10 col-xs-9 heading-name">
+            <span class="heading-name-meta" >Welcome,<span id="connected_user_name">Loading...</span>
+           </span>  
+             <span class="heading-online" id="no_of_connection">Not Connected with any people</span>
+        </div>         
+          <div class="col-sm-1 col-md-1 col-xs-1 pull-right one_top">
+            	<i class="fa fa-paperclip fa-2x  pull-right" aria-hidden="true">
+            	</i>
+            	<input type="file" id="imagefile" title=" " accept="image/*">
+          </div>      
+      </div>  
+
+        <div class="row message" id="conversation">
+		 
+        
+        </div>
+
+        <div class="row reply">
+        	  
+        	<div id="typing_on"> 
+			  <span>T</span>
+			  <span>y</span>
+			  <span>p</span>
+			  <span>i</span>
+			  <span>n</span>
+			  <span>g</span>
+			 
+			</div> 
+
+
+          <!--div class="col-sm-1 col-xs-1 reply-emojis">
+            <i class="fa fa-smile-o fa-2x"></i>
+          </div--> 
+          <div class="col-sm-11 col-xs-11 reply-main">
+            <textarea class="form-control" rows="1" id="comment"></textarea>
+          </div> 
+          
+          <div class="col-sm-1 col-xs-1 reply-send">
+            <i class="fa fa-send fa-2x" id="submit"  aria-hidden="true"></i>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div> 
+    
+   
+<div class="modal fade" id="user_details_modal" tabindex="-1" role="dialog" aria-labelledby="feedback-form-modalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		
+			<div class="modal-header">
+				<h4>Your Name Please</h4>
+			</div>  
+			
+				<div class="modal-body ">
+					<div class="row">
+						
+						<div class="col-md-12">
+								<input class="form-control" id="pseudoInput" type="text">	
+						</div> 
+						
+						<div id="alertPseudo" class="col-md-12" style="display: block;">
+							Try different name
+						</div> 
+						  
+						<div class="col-md-12" style="text-align: center;margin-top: 1%;">
+							<button id="pseudoSubmit" class="btn btn-default">Start Chat</button>	
+						</div> 
+						 
+						  
+					</div>
+					
+				</div>  
+
+	</div> 
+	</div> 
+</div>
+
+<div class="modal fade" id="image_viewer" tabindex="-1" role="dialog" aria-labelledby="feedback-form-modalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content" >
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+       </button> 
+			 <img class="full_image" id="open_image_here" src="" />
+		</div> 
+	</div> 
+</div>
+ 
+</body>
+</html>
