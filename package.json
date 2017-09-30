@@ -5,7 +5,8 @@
   "dependencies": {
     "express": "*",
     "node-emoji": "^1.8.1",
-    "socket.io": "*"
+    "socket.io": "*",
+    "ejs": "*"
   },
   "scripts": {
     "start": "node server.js"
