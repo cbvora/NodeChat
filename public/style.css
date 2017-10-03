@@ -52,9 +52,12 @@ body {
 .one_top{
 	margin-top:1% !important;
 	cursor: pointer; 
+	padding-top: 11px !important;
+    padding-right: 15px !important;
+    padding-left: 0 !important;
 }  
-
-.pointer{
+  
+.pointer{ 
 	cursor: pointer;
 }
  
