@@ -34,7 +34,6 @@ $(function() {
 	});
 	
 	$('#comment').keyup(function() {
-    console.log('happening');
     typing = true;
     socket.emit('typing', 'typing...');
     clearTimeout(timeout);
@@ -43,20 +42,17 @@ $(function() {
  
    
  $('#imagefile').bind('change', function(e){
- 	  cl("Sending Images");
       var data = e.originalEvent.target.files[0];
       var c_img_size = data.size ;
-      if( c_img_size > 1000000 ){ // > 1MB
+      if( c_img_size > 1048576 ){ // > 1MB
       	alert("It's "+bytesToSize(c_img_size)+". Max 1MB allowed");
       }else{     
-      	  cl("start again !");
 	      var reader = new FileReader();
 	      reader.onload = function(evt){
 	        set_image('me', evt.target.result, true);
 	        socket.emit('user_image', evt.target.result );
 	      };
 	      reader.readAsDataURL(data);
-	      cl("stop !");	 
       }   
       
 }); 
@@ -91,15 +87,6 @@ socket.on('nbUsers', function(msg) {
 	}else{    
 		sval("no_of_connection","Not Connected with any people","text");
 	}  
-	
-	
-	/*var no_of_conneted_people = msg.nb - 1  ;
-	if(no_of_conneted_people != 0  ){
-		var conncted_user_string = set_connected_with(msg.connected_user_names);
-		sval("no_of_connection","You are connected with "+no_of_conneted_people+" people"+conncted_user_string,"text");	
-	}else{ 
-		sval("no_of_connection","Not Connected with any people","text");
-	} */ 
 });    
 
 
@@ -107,11 +94,10 @@ function bytesToSize(bytes) {
    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
    if (bytes == 0) return '0 Byte';
    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-};
+   return parseFloat(bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
+}; 
  
 function set_connected_with(all_people){
-	 cl(all_people);
 	 var my_name = val("connected_user_name","text");
 	 var im_connected_with = remove_this_from_list(all_people,my_name);
 	 if(im_connected_with.length > 0 ){
@@ -349,25 +335,6 @@ function cl(print_this){
 	return console.log(print_this); 
 }   
       
-       
-function je(list){
-	return JSON.stringify(list);
-}     
-  
-function jd(data){  
-	return JSON.parse(data);
-}  
-  
-  
-function validate_mobile(user_mobile){
-	user_mobile_check = /^[789]\d{9}$/.test(user_mobile);
-	if(user_mobile_check){
-		return true; 
-	}else{
-		return false; 
-	} 
-}
-  
 function is_empty(this_id){
 	if((val(this_id) == '') || (val(this_id) == null) ){
 		return true;
