@@ -14,5 +14,6 @@ Tech-Stack : Socket.io, Node.js , Bootstrap , Javascript and jquery
 ### Credits
 
 Developer : [Chirag Vora] (http://chiragvora.in/)
-Demo : http://mean.chiragvora.in/)
- 
+
+Demo : http://mean.chiragvora.in/ (Server might be off sometimes)
+   
